@@ -11,17 +11,27 @@ class Fuvar:
 fuvarlista = []
 f = open('fuvar.csv', 'rt', encoding='utf-8')
 f.readline()
-for line in f:
-    line = line.strip().split(';')
-    fuvarlista.append(Fuvar(line[0],line[1],line[2],line[3],line[4],line[5],line[6]))
+for sor in f:
+    sor = sor.strip().split(';')
+    fuvarlista.append(Fuvar(sor[0],sor[1],sor[2],sor[3],sor[4],sor[5],sor[6]))
 f.close()
 
-print("3. feladat: ",len(fuvarlista) "fuvar")
+print("3. feladat: ",len(fuvarlista), "fuvar")
 
 fuvarszam = 0
 bevetel = 0
 for fuvar in fuvarlista:
     if fuvar.azon == 6185:
         fuvarszam += 1
-        bevetel += fuvar.price + fuvar.tip
+        bevetel + fuvar.fizetseg + fuvar.borravalo
 print(f"4. feladat: {fuvar} fuvar alatt: {str(bevetel).replace('.',',')}$")
+
+fizetesimodok = {}
+for fuvar in fuvarlista:
+    if fuvar.idotartam in fizetesimodok.keys():
+        fizetesimodok[fuvar.fizetesmod] += 1
+    else:
+        fizetesimodok[fuvar.fizetesmod] = 1
+print("5. feladat")
+for k,v in fizetesimodok.items():
+    print(f'\t{k}: {v} fuvar')
