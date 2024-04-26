@@ -28,7 +28,7 @@ print(f"4. feladat: {fuvarszam} fuvar alatt: {str(bevetel).replace('.', ',')}$")
 
 fizetesimodok = {}
 for fuvar in fuvarlista:
-    if fuvar.idotartam in fizetesimodok.keys():
+    if fuvar.fizetesmod in fizetesimodok.keys():
         fizetesimodok[fuvar.fizetesmod] += 1
     else:
         fizetesimodok[fuvar.fizetesmod] = 1
