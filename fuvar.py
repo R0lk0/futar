@@ -1,5 +1,5 @@
 class Fuvar:
-    def __init__(self, azon, iIdo, idotartam, tavolsag, fizetseg, borravalo, fizetesmod) -> None:
+    def __init__(self, azon, iIdo, idotartam, tavolsag, fizetseg, borravalo, fizetesmod):
         self.azon = int(azon)
         self.iIdo = iIdo
         self.idotartam = idotartam
@@ -23,8 +23,8 @@ bevetel = 0
 for fuvar in fuvarlista:
     if fuvar.azon == 6185:
         fuvarszam += 1
-        bevetel + fuvar.fizetseg + fuvar.borravalo
-print(f"4. feladat: {fuvar} fuvar alatt: {str(bevetel).replace('.',',')}$")
+        bevetel += fuvar.fizetseg + fuvar.borravalo
+print(f"4. feladat: {fuvarszam} fuvar alatt: {str(bevetel).replace('.', ',')}$")
 
 fizetesimodok = {}
 for fuvar in fuvarlista:
@@ -32,6 +32,6 @@ for fuvar in fuvarlista:
         fizetesimodok[fuvar.fizetesmod] += 1
     else:
         fizetesimodok[fuvar.fizetesmod] = 1
-print("5. feladat")
-for k,v in fizetesimodok.items():
+print("5. feladat: ")
+for k, v in fizetesimodok.items():
     print(f'\t{k}: {v} fuvar')
