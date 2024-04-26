@@ -1,28 +1,27 @@
 class Fuvar:
-    def __init__(self, taxiAzon, iIdo, idotartam, tavolsag, viteldij, borravalo, fizetesmod):
-        self.taxiAzon = taxiAzon
+    def __init__(self, azon, iIdo, idotartam, tavolsag, fizetseg, borravalo, fizetesmod) -> None:
+        self.azon = int(azon)
         self.iIdo = iIdo
         self.idotartam = idotartam
         self.tavolsag = tavolsag
-        self.viteldij = viteldij
-        self.borravalo = borravalo 
+        self.fizetseg = float(fizetseg.replace(',', '.'))
+        self.borravalo = float(borravalo.replace(',', '.'))
         self.fizetesmod = fizetesmod
 
-def negyesfeladat():
-    fuvarokSzama = 0
-    bevetel = 0
-    for sor in f:
-        if Fuvar(sor[0]) == 6185:
-            fuvarokSzama += 1
-            bevetel += Fuvar(sor[5])
+fuvarlista = []
+f = open('fuvar.csv', 'rt', encoding='utf-8')
+f.readline()
+for line in f:
+    line = line.strip().split(';')
+    fuvarlista.append(Fuvar(line[0],line[1],line[2],line[3],line[4],line[5],line[6]))
+f.close()
 
-fuvarok = []
-f = open('fuvar.csv', 'rt', encoding = 'utf-8')
-for sor in f:
-    f.readline()
-    sor = sor.strip()
-    sor = sor.split(';')
-    fuvarok.append(Fuvar(sor[0], sor[1], sor[2], sor[3], sor[4], sor[5], sor[6]))
+print("3. feladat: ",len(fuvarlista) "fuvar")
 
-print('3. feladat:', , 'fuvar')
-print('4. feladat: ')
+fuvarszam = 0
+bevetel = 0
+for fuvar in fuvarlista:
+    if fuvar.azon == 6185:
+        fuvarszam += 1
+        bevetel += fuvar.price + fuvar.tip
+print(f"4. feladat: {fuvar} fuvar alatt: {str(bevetel).replace('.',',')}$")
